@@ -1,0 +1,12 @@
+recipes:
+  DEFAULT:
+    enabled: true
+    shape:
+      - "DDD"  # 第一行：全是钻石
+      - "WCW"  # 第二行：羊毛, 箱子, 羊毛
+      - "WWW"  # 第三行：羊毛, 羊毛, 羊毛
+    ingredients:
+      D: "DIAMOND"
+      C: "CHEST"
+      W: "WHITE_WOOL"
+      # 不需要为空格 ' ' 定义任何东西

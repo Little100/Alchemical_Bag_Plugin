@@ -1,0 +1,13 @@
+recipes:
+  DEFAULT:
+    enabled: true
+    shape:
+      - "DDD"  # 第一行：全是钻石
+      - "WCW"  # 第二行：羊毛, 箱子, 羊毛
+      - "WWW"  # 第三行：羊毛, 羊毛, 羊毛
+      # 注意，要设置空的物品直接留空即可
+      # 这里必须是只能有三个字符
+    ingredients:
+      D: "DIAMOND"
+      C: "CHEST"
+      W: "WHITE_WOOL"

@@ -1,0 +1,19 @@
+name: Alchemical_Bag_Plugin
+version: '1.0-SNAPSHOT'
+main: org.Little_100.alchemical_Bag_Plugin.Alchemical_Bag_Plugin
+api-version: '1.21'
+authors: [ Little_100 ]
+description: 炼金术袋子 但是是插件版
+website: www.little100.top
+
+commands:
+  alchemicalbagreload:
+    description: 重载 Alchemical Bag 插件的配置。
+    usage: /<command>
+    permission: alchemicalbag.reload
+    aliases: [abagreload, alchreload]
+
+permissions:
+  alchemicalbag.reload:
+    description: 允许用户重载炼金术袋子插件的配置。
+    default: op
