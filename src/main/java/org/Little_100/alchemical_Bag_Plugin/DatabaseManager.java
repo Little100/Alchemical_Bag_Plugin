@@ -51,7 +51,7 @@ public class DatabaseManager {
             String jdbcUrl = "jdbc:sqlite:" + dbPath; // SQLite 的 JDBC URL
 
             connection = DriverManager.getConnection(jdbcUrl);
-            plugin.getLogger().info("成功连接到 SQLite 数据库: " + dbPath);
+            plugin.debugLog("成功连接到 SQLite 数据库: " + dbPath);
             return true;
         } catch (SQLException e) {
             plugin.getLogger().log(Level.SEVERE, "无法连接到 SQLite 数据库!", e);
@@ -64,7 +64,7 @@ public class DatabaseManager {
         if (connection != null) {
             try {
                 connection.close();
-                plugin.getLogger().info("已断开与 SQLite 数据库的连接。");
+                plugin.debugLog("已断开与 SQLite 数据库的连接。");
             } catch (SQLException e) {
                 plugin.getLogger().log(Level.SEVERE, "关闭 SQLite 连接时出错!", e);
             }
@@ -93,7 +93,7 @@ public class DatabaseManager {
         try (Connection conn = getConnection();
              Statement stmt = conn.createStatement()) { // 使用 Statement 即可
             stmt.execute(createTableSQL);
-            plugin.getLogger().info("SQLite 数据库表 '" + tableName + "' 初始化成功。");
+            plugin.debugLog("SQLite 数据库表 '" + tableName + "' 初始化成功。");
         } catch (SQLException e) {
             plugin.getLogger().log(Level.SEVERE, "初始化 SQLite 数据库表 '" + tableName + "' 时出错!", e);
         }
