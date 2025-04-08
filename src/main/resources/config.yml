@@ -1,3 +1,5 @@
+debug-mode: false
+
 recipes:
   DEFAULT:
     enabled: true
