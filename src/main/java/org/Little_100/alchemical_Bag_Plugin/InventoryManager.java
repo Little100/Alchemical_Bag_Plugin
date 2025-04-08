@@ -39,13 +39,13 @@ public class InventoryManager implements Listener {
         String closedBagColor = openBagColors.remove(playerUUID);
         if (closedInventory != null && closedBagColor != null) {
             plugin.getDatabaseManager().saveInventory(playerUUID, closedBagColor, closedInventory.getContents());
-            plugin.getLogger().info("玩家 " + playerUUID + " 的 " + closedBagColor + " 背包已通过 handleInventoryClose 保存。"); // 调试信息
+            plugin.debugLog("玩家 " + playerUUID + " 的 " + closedBagColor + " 背包已通过 handleInventoryClose 保存。"); // 调试信息
         }
     }
 
     // 插件禁用时保存所有打开的背包
     public void saveAllOpenInventories() {
-        plugin.getLogger().info("正在保存所有打开的炼金术袋子...");
+        plugin.debugLog("正在保存所有打开的炼金术袋子...");
         Map<UUID, Inventory> inventoriesToSave = new HashMap<>(openInventories);
         for (Map.Entry<UUID, Inventory> entry : inventoriesToSave.entrySet()) {
             UUID uuid = entry.getKey();
@@ -53,14 +53,14 @@ public class InventoryManager implements Listener {
             String color = openBagColors.get(uuid);
             if (color != null) {
                 plugin.getDatabaseManager().saveInventory(uuid, color, inv.getContents());
-                plugin.getLogger().info("已保存玩家 " + uuid + " 的 " + color + " 背包 (插件禁用)。");
+                plugin.debugLog("已保存玩家 " + uuid + " 的 " + color + " 背包 (插件禁用)。");
             } else {
                 plugin.getLogger().warning("无法找到玩家 " + uuid + " 打开背包的颜色信息，无法保存！(插件禁用)");
             }
         }
         openInventories.clear();
         openBagColors.clear();
-        plugin.getLogger().info("所有打开的炼金术袋子保存完毕 (插件禁用)。");
+        plugin.debugLog("所有打开的炼金术袋子保存完毕 (插件禁用)。");
     }
 
     // --- Bukkit 事件监听器方法 ---
@@ -80,7 +80,7 @@ public class InventoryManager implements Listener {
             if (closedBagColor != null) {
                 // 保存背包内容到数据库
                 plugin.getDatabaseManager().saveInventory(playerUUID, closedBagColor, closedInventory.getContents());
-                plugin.getLogger().info("玩家 " + player.getName() + " 关闭了 " + closedBagColor + " 炼金术袋子，内容已保存。");
+                plugin.debugLog("玩家 " + player.getName() + " 关闭了 " + closedBagColor + " 炼金术袋子，内容已保存。");
             } else {
                 plugin.getLogger().warning("玩家 " + player.getName() + " 关闭了一个炼金术袋子，但无法找到其颜色信息！");
             }
